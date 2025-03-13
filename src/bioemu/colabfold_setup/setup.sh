@@ -15,11 +15,11 @@ sed -i 's/git+https:\/\/github.com\/sokrypton\/ColabFold/git+https:\/\/github.co
 chmod +x ${COLABFOLD_DIR}/install_colabbatch_linux.sh
 cd ${COLABFOLD_DIR} && bash install_colabbatch_linux.sh
 # Attempt to update jax/numpy
-cp ${SCRIPT_DIR}/update.sh ${COLABFOLD_DIR}/localcolabfold/update.sh
-cd ${COLABFOLD_DIR}/localcolabfold/ && bash update.sh
+cp ${SCRIPT_DIR}/update.sh /content/${COLABFOLD_DIR}/localcolabfold/update.sh
+cd /content/${COLABFOLD_DIR}/localcolabfold/ && bash update.sh
 # Patch colabfold install
 echo "Patching colabfold installation..."
-patch ${COLABFOLD_DIR}/localcolabfold/colabfold-conda/lib/python3.10/site-packages/alphafold/model/modules.py ${SCRIPT_DIR}/modules.patch
-patch ${COLABFOLD_DIR}/localcolabfold/colabfold-conda/lib/python3.10/site-packages/colabfold/batch.py ${SCRIPT_DIR}/batch.patch
+patch /content/${COLABFOLD_DIR}/localcolabfold/colabfold-conda/lib/python3.10/site-packages/alphafold/model/modules.py ${SCRIPT_DIR}/modules.patch
+patch /content/${COLABFOLD_DIR}/localcolabfold/colabfold-conda/lib/python3.10/site-packages/colabfold/batch.py ${SCRIPT_DIR}/batch.patch
 
 echo "Colabfold installation complete!"
